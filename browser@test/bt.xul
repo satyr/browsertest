@@ -1,0 +1,6 @@
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  Reload and see dumps.
+  <browser id="test-browser" type="content" disablehistory="true"
+    width="200" height="100"/>
+  <script type="application/x-javascript;version=1.8" src="bt.js"/>
+</window>
