@@ -4,6 +4,7 @@
   <rdf:Description rdf:about="urn:mozilla:install-manifest">
     <id>browser@test</id>
     <name>browser test</name>
+    <creator>satyr</creator>
     <version>0</version>
     <optionsURL>chrome://bt/content/bt.xul?options</optionsURL>
     <targetApplication><rdf:Description>
