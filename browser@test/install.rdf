@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<rdf:RDF
- xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
  xmlns="http://www.mozilla.org/2004/em-rdf#">
   <rdf:Description rdf:about="urn:mozilla:install-manifest">
     <id>browser@test</id>
     <name>browser test</name>
     <version>0</version>
+    <optionsURL>chrome://bt/content/bt.xul?options</optionsURL>
     <targetApplication><rdf:Description>
       <id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</id>
       <minVersion>1.0+</minVersion>
