@@ -13,24 +13,36 @@ function test(ev){
   var B = document.getElementById('test-browser');
   var rurl = 'resource://bt/bt.htm';
   var urls = [
+    'data:text/html,',
     rurl,
     RPH.resolveURI(IOS.newURI(rurl, null, null)),
-    ('data:text/html,'+
-     '<body onload="with(document)write(typeof Application);close()">'),
     'chrome://bt/content/bt.htm',
-    ];
-  urls.sort(function() Math.random() - .5);
+    ].sort(function() Math.random() - .5);
+  B.setAttribute('src', '');
   B.addEventListener('load', function(){
     var {location} = B.contentWindow;
-    location.href =
-      'javascript:dump("'+ location.protocol +' "+window.Application+"\\n")';
-    var u = urls.shift();
+    location.href = 'javascript:0,'+ function(){
+      dump(location.protocol +'\n  ');
+      try{ dump(Components.ID) } catch(e){ dump(e) }
+      dump('\n');
+      var xhr = XMLHttpRequest();
+      for each(var url in ['http://www.google.com/', location.href]){
+        dump('  ');
+        try {
+          xhr.open('GET', url, false);
+          xhr.send(null);
+          dump(url +' '+ xhr.status +' '+ xhr.statusText);
+        } catch(e){ dump(e.message) }
+        dump('\n');
+      }
+    } +'()';
+    var u = urls.pop();
     if(u) setTimeout(function(){ B.setAttribute('src', u) }, 99);
     else {
       B.removeEventListener('load', arguments.callee, false);
       button.disabled = false;
     }
   }, false);
-  dump('\n'+ [/^\w+/(u) for each(u in urls)].join(' -> ') +'\n');
-  B.setAttribute('src', urls.shift());
+  B.setAttribute('src', urls.pop());
+  dump('\n');
 }
