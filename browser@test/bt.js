@@ -37,7 +37,7 @@ function test(ev){
       }
     } +'()';
     var u = urls.pop();
-    if(u) setTimeout(function(){ B.setAttribute('src', u) }, 99);
+    if(u) setTimeout(function(){ B.setAttribute('src', u) }, 42);
     else {
       B.removeEventListener('load', arguments.callee, false);
       button.disabled = false;
